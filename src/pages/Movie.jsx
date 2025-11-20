@@ -1,118 +1,93 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { movies } from "../data/movies";
-import { Link } from "react-router-dom";
+// pages/Seats.jsx - Updated to receive movie data
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-function Movie() {
-  const { id } = useParams();
-  const movie = movies.find((m) => m.id === parseInt(id));
-  const [selectedDate, setSelectedDate] = useState("today");
+function Seats() {
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const location = useLocation();
+  const { movie, showtime, date } = location.state || {};
 
+  // Show error if no movie data
   if (!movie) {
-    return <div>Movie not found</div>;
+    return (
+      <div className="container text-center py-5">
+        <h2>No Movie Selected</h2>
+        <p>Please go back and select a movie and showtime first.</p>
+        <Link to="/" className="btn btn-primary">
+          Back to Home
+        </Link>
+      </div>
+    );
   }
-
-  const dates = [
-    { id: 'today', label: 'Today', day: 'Today' },
-    { id: 'tomorrow', label: 'Tomorrow', day: 'Tomorrow' },
-    { id: 'day3', label: 'Sat 16', day: 'Sat', date: '16' },
-    { id: 'day4', label: 'Sun 17', day: 'Sun', date: '17' },
-    { id: 'day5', label: 'Mon 18', day: 'Mon', date: '18' },
-    { id: 'day6', label: 'Tue 19', day: 'Tue', date: '19' },
-    { id: 'day7', label: 'Wed 20', day: 'Wed', date: '20' }
-  ];
 
   return (
     <div className="container">
-      <section className="movie-header py-4 border-bottom">
-        <div className="row align-items-center">
-          {/* Movie Poster */}
-          <div className="col-md-4">
-            <img
-              src={movie.poster}
-              alt={movie.title}
-              className="img-fluid rounded"
-              style={{ height: "400px", objectFit: "cover", width: "100%" }}
-            />
-          </div>
-
-          {/* Movie Info */}
-          <div className="col-md-8">
-            <div className="d-flex justify-content-between align-items-start mb-3">
-              <h1 className="display-5 fw-bold">{movie.title}</h1>
-              <Link to="/seats" className="btn btn-primary btn-lg">
-                Book Tickets
-              </Link>
-            </div>
-
-            {/* Movie Metadata */}
-            <div className="d-flex gap-4 mb-3">
-              <span className="badge bg-warning text-dark fs-6">
-                ⭐ {movie.rating}/10
-              </span>
-              <span className="fs-6">🕒 {movie.duration}</span>
-              <span className="fs-6">🎭 {movie.genre}</span>
-            </div>
-
-            {/* Description Preview */}
-            <p className="lead">{movie.description}</p>
-          </div>
-        </div>
-      </section>
-
-
-
-      <section className="showtimes-section py-4">
-        <h2 className="mb-4">Showtimes</h2>
-        
-        {/* Date Selector */}
-        <div className="mb-4">
-          <h5 className="mb-3">Select Date:</h5>
-          <div className="d-flex overflow-auto gap-2 pb-3">
-            {dates.map(date => (
-              <button
-                key={date.id}
-                className={`btn ${
-                  selectedDate === date.id ? 'btn-primary' : 'btn-outline-primary'
-                } flex-shrink-0`}
-                onClick={() => setSelectedDate(date.id)}
-                style={{minWidth: '100px'}}
-              >
-                <div className="fw-bold">{date.day}</div>
-                {date.date && <small>{date.date}</small>}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Time Slots */}
-        <div>
-          <h5 className="mb-3">
-            Times for {dates.find(d => d.id === selectedDate)?.label}:
-          </h5>
-          <div className="d-flex overflow-auto gap-3 pb-3">
-            {movie.showtimes && movie.showtimes.length > 0 ? (
-              movie.showtimes.map((time, index) => (
-                <button
-                  key={index}
-                  className="btn btn-outline-secondary flex-shrink-0"
-                  style={{minWidth: '120px'}}
-                >
-                  {time}
-                </button>
-              ))
-            ) : (
-              <div className="text-muted">
-                No showtimes available for this movie yet.
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
       
+      {/* Page Header - UPDATED WITH MOVIE INFO */}
+      <div className="row mb-4">
+        <div className="col">
+          <h1>Select Your Seats</h1>
+          <div className="border-bottom pb-3 mb-3">
+            <h4>{movie.title}</h4>
+            <p className="mb-1">
+              <strong>Date:</strong> {date} | <strong>Time:</strong> {showtime}
+            </p>
+            <p className="text-muted mb-0">{movie.genre} • {movie.duration}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Cinema Screen */}
+      <div className="row justify-content-center mb-5">
+        <div className="col-md-8 text-center">
+          <div className="bg-dark text-white py-3 rounded">
+            <h4 className="mb-0">SCREEN</h4>
+          </div>
+          <div className="text-center mt-2">
+            <small className="text-muted">All eyes this way please</small>
+          </div>
+        </div>
+      </div>
+
+      {/* Seat Map - Coming next */}
+      <div className="row justify-content-center mb-4">
+        <div className="col-md-8 text-center">
+          <p>Seat selection grid will be built here...</p>
+        </div>
+      </div>
+
+      {/* Selected Seats Summary */}
+      <div className="row justify-content-center mb-4">
+        <div className="col-md-8">
+          <div className="border p-3 rounded">
+            <h5>Selected Seats: {selectedSeats.length}</h5>
+            <p className="mb-2">
+              {selectedSeats.length > 0 ? selectedSeats.join(', ') : 'No seats selected'}
+            </p>
+            <p className="fw-bold">Total: {selectedSeats.length * 35} DH</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="row justify-content-center">
+        <div className="col-md-8 d-flex gap-3">
+          <Link to="/" className="btn btn-outline-secondary">
+            Back to Movies
+          </Link>
+          <Link 
+            to="/payment" 
+            className={`btn btn-primary ${
+              selectedSeats.length === 0 ? 'disabled' : ''
+            }`}
+          >
+            Continue to Payment ({selectedSeats.length} seats)
+          </Link>
+        </div>
+      </div>
+
     </div>
   );
 }
 
-export default Movie;
+export default Seats;
