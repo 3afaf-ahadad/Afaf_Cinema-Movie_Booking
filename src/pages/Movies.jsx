@@ -1,12 +1,23 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { movies } from "../data/movies";
+import { useEffect } from "react";
 import MovieCard from "../components/common/MovieCard";
 
 function Movies() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get("search");
+    if (searchParam) {
+      setSearchTerm(searchParam);
+      // Clear the URL parameter
+      window.history.replaceState({}, "", "/movies");
+    }
+  }, []);
 
   const allGenres = useMemo(() => {
     const genres = new Set();

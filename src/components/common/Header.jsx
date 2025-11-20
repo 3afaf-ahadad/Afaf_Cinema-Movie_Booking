@@ -35,15 +35,6 @@ function Header() {
             </div>
           </nav>
 
-          <div className="ms-auto d-flex align-items-center gap-2">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="form-control"
-              style={{ width: "200px" }}
-            />
-          </div>
-
           {!isMoviesPage && (
             <div className="ms-auto d-flex align-items-center gap-2">
               <form onSubmit={handleSearch} className="d-flex">
