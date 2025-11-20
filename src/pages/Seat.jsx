@@ -1,43 +1,57 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useLocation } from "react-router-dom";
+import { useState, useMemo } from "react";
 
 function Seats() {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const location = useLocation();
   const { movie, showtime, date } = location.state || {};
 
-  // Generate seat map data
-  const generateSeats = () => {
-    const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-    const seats = [];
-    
-    rows.forEach(row => {
+  const takenSeats = useMemo(() => {
+    const rows = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    const taken = [];
+
+    console.log("Generating taken seats..."); // Debug log
+
+    rows.forEach((row) => {
+      for (let number = 1; number <= 8; number++) {
+        if (Math.random() < 0.3) {
+          taken.push(`${row}${number}`);
+        }
+      }
+    });
+
+    console.log("Taken seats:", taken); // Debug log
+    return taken;
+  }, []);
+
+  const seats = useMemo(() => {
+    const rows = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    const seatObjects = [];
+
+    rows.forEach((row) => {
       for (let number = 1; number <= 8; number++) {
         const seatId = `${row}${number}`;
-        // Randomly mark some seats as taken for realism
-        const isTaken = Math.random() < 0.3; // 30% chance taken
-        seats.push({
+        const isTaken = takenSeats.includes(seatId);
+        seatObjects.push({
           id: seatId,
           row: row,
           number: number,
           isTaken: isTaken,
-          isSelected: selectedSeats.includes(seatId)
+          isSelected: selectedSeats.includes(seatId),
         });
       }
     });
-    
-    return seats;
-  };
 
-  const seats = generateSeats();
+    return seatObjects;
+  }, [takenSeats, selectedSeats]); // Only update when selection changes
 
   const handleSeatClick = (seat) => {
     if (seat.isTaken) return; // Can't select taken seats
-    
-    setSelectedSeats(prev => {
+
+    setSelectedSeats((prev) => {
       if (prev.includes(seat.id)) {
         // Remove if already selected
-        return prev.filter(id => id !== seat.id);
+        return prev.filter((id) => id !== seat.id);
       } else {
         // Add to selection
         return [...prev, seat.id];
@@ -46,9 +60,9 @@ function Seats() {
   };
 
   const getSeatClass = (seat) => {
-    if (seat.isTaken) return 'btn btn-danger';
-    if (seat.isSelected) return 'btn btn-success';
-    return 'btn btn-outline-primary';
+    if (seat.isTaken) return "btn btn-danger";
+    if (seat.isSelected) return "btn btn-success";
+    return "btn btn-outline-primary";
   };
 
   // Show error if no movie data
@@ -66,7 +80,6 @@ function Seats() {
 
   return (
     <div className="container">
-      
       {/* Page Header */}
       <div className="row mb-4">
         <div className="col">
@@ -76,7 +89,9 @@ function Seats() {
             <p className="mb-1">
               <strong>Date:</strong> {date} | <strong>Time:</strong> {showtime}
             </p>
-            <p className="text-muted mb-0">{movie.genre} • {movie.duration}</p>
+            <p className="text-muted mb-0">
+              {movie.genre} • {movie.duration}
+            </p>
           </div>
         </div>
       </div>
@@ -98,24 +113,23 @@ function Seats() {
         <div className="col-md-8">
           <div className="seat-map text-center">
             {/* Generate seat rows */}
-            {['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].map(row => (
+            {["A", "B", "C", "D", "E", "F", "G", "H"].map((row) => (
               <div key={row} className="seat-row mb-2">
                 <span className="row-label me-3 fw-bold">{row}</span>
                 {seats
-                  .filter(seat => seat.row === row)
-                  .map(seat => (
+                  .filter((seat) => seat.row === row)
+                  .map((seat) => (
                     <button
                       key={seat.id}
                       className={`${getSeatClass(seat)} mx-1`}
-                      style={{width: '40px', height: '40px'}}
+                      style={{ width: "40px", height: "40px" }}
                       onClick={() => handleSeatClick(seat)}
                       disabled={seat.isTaken}
-                      title={seat.isTaken ? 'Seat taken' : `Seat ${seat.id}`}
+                      title={seat.isTaken ? "Seat taken" : `Seat ${seat.id}`}
                     >
                       {seat.number}
                     </button>
-                  ))
-                }
+                  ))}
               </div>
             ))}
           </div>
@@ -127,15 +141,24 @@ function Seats() {
         <div className="col-md-8">
           <div className="d-flex justify-content-center gap-4">
             <div className="d-flex align-items-center">
-              <div className="btn btn-outline-primary mx-2" style={{width: '20px', height: '20px'}}></div>
+              <div
+                className="btn btn-outline-primary mx-2"
+                style={{ width: "20px", height: "20px" }}
+              ></div>
               <small>Available</small>
             </div>
             <div className="d-flex align-items-center">
-              <div className="btn btn-success mx-2" style={{width: '20px', height: '20px'}}></div>
+              <div
+                className="btn btn-success mx-2"
+                style={{ width: "20px", height: "20px" }}
+              ></div>
               <small>Selected</small>
             </div>
             <div className="d-flex align-items-center">
-              <div className="btn btn-danger mx-2" style={{width: '20px', height: '20px'}}></div>
+              <div
+                className="btn btn-danger mx-2"
+                style={{ width: "20px", height: "20px" }}
+              ></div>
               <small>Taken</small>
             </div>
           </div>
@@ -148,7 +171,9 @@ function Seats() {
           <div className="border p-3 rounded">
             <h5>Selected Seats: {selectedSeats.length}</h5>
             <p className="mb-2">
-              {selectedSeats.length > 0 ? selectedSeats.join(', ') : 'No seats selected'}
+              {selectedSeats.length > 0
+                ? selectedSeats.join(", ")
+                : "No seats selected"}
             </p>
             <p className="fw-bold">Total: {selectedSeats.length * 35} DH</p>
           </div>
@@ -161,24 +186,23 @@ function Seats() {
           <Link to="/" className="btn btn-outline-secondary">
             Back to Movies
           </Link>
-          <Link 
-            to="/payment" 
+          <Link
+            to="/payment"
             state={{
               movie: movie,
               showtime: showtime,
               date: date,
               seats: selectedSeats,
-              total: selectedSeats.length * 35
+              total: selectedSeats.length * 35,
             }}
             className={`btn btn-primary ${
-              selectedSeats.length === 0 ? 'disabled' : ''
+              selectedSeats.length === 0 ? "disabled" : ""
             }`}
           >
             Continue to Payment ({selectedSeats.length} seats)
           </Link>
         </div>
       </div>
-
     </div>
   );
 }
