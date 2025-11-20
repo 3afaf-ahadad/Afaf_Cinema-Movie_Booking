@@ -48,9 +48,27 @@ function Movie() {
           <div className="col-md-8">
             <div className="d-flex justify-content-between align-items-start mb-3">
               <h1 className="display-5 fw-bold">{movie.title}</h1>
-              <Link to="/seats" className="btn btn-primary btn-lg">
+              // In Movie.jsx - SIMPLER SOLUTION
+              {selectedTime ? (
+                <Link
+                  to="/seats"
+                  state={{
+                    movie: movie,
+                    showtime: selectedTime,
+                    date: dates.find((d) => d.id === selectedDate)?.label,
+                  }}
+                  className="btn btn-primary btn-lg"
+                >
+                  Book Tickets
+                </Link>
+              ) : (
+                <button className="btn btn-secondary btn-lg" disabled>
+                  Book Tickets
+                </button>
+              )}
+              {/* <Link to="/seats" className="btn btn-primary btn-lg">
                 Book Tickets
-              </Link>
+              </Link> */}
             </div>
 
             {/* Movie Metadata */}
