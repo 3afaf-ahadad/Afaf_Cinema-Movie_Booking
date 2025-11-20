@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/common/Header";
-import Footer from "./components/common/Footer";
-import Home from "./pages/Home";
-import Movie from "./pages/Movie";
-import Seats from "./pages/Seats";
-import Payment from "./pages/Payment";
+import Header from "./components/common/Header.jsx";
+import Footer from "./components/common/Footer.jsx";
+import Home from "./pages/Home.jsx";
+import Movie from "./pages/Movie.jsx";
+import Seats from "./pages/Seat.jsx";
+import Payment from "./pages/Payment.jsx";
 import './styles/index.css'
 
 function App() {
