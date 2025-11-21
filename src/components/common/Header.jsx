@@ -22,7 +22,7 @@ function Header() {
     <header className="border-bottom">
       <div className="container-fluid">
         <div className="d-flex align-items-center py-2">
-          <Link to={"/"}>
+          <Link className="text-decoration-none" to={"/"}>
           <span className="fs-3 fw-bold text-dark text-decoration-none">Afaf Cinema</span>
           </Link>
 
