@@ -17,7 +17,49 @@ function Cinemas() {
   ];
 
   return(
-    
+    <div className="container">
+      <div className="row mb-4">
+        <div className="col">
+          <h1 className="display-5 fw-bold">Our Cinemas</h1>
+          <p className="lead">Experience movies at our premium locations</p>
+        </div>
+      </div>
+
+      <div className="row">
+        {cinemas.map(cinema => (
+          <div key={cinema.id} className="col-md-6 mb-4">
+            <div className="card h-100">
+              <div className="card-body">
+                <h5 className="card-title">{cinema.name}</h5>
+                <p className="card-text">
+                  <strong>📍 Address:</strong><br/>
+                  {cinema.address}
+                </p>
+                <p className="card-text">   
+                  <strong>🕒 Hours:</strong><br/>
+                  {cinema.hours}
+                </p>
+                <div>
+                  <strong>🎯 Features:</strong>
+                  <div className="d-flex flex-wrap gap-2 mt-2">
+                    {cinema.features.map((feature, index) => (
+                      <span key={index} className="badge bg-primary">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="card-footer">
+                <button className="btn btn-outline-primary btn-sm">
+                  Get Directions
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 
 }

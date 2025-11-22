@@ -74,6 +74,17 @@ function Movie() {
         </div>
       </section>
 
+      <div className="mb-4">
+        <h5 className="mb-3">Select Cinema:</h5>
+        <div className="d-flex flex-wrap gap-2">
+          <button className="btn btn-outline-primary active">
+            Downtown Cinema
+          </button>
+          <button className="btn btn-outline-primary">Mall Location</button>
+          <button className="btn btn-outline-primary">City Center</button>
+        </div>
+      </div>
+
       {/* SHOWTIMES SECTION */}
       <section className="showtimes-section py-4">
         <h2 className="mb-4">Showtimes</h2>
