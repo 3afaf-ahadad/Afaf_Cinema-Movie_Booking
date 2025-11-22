@@ -13,6 +13,13 @@ function Cinemas() {
       address: "456 Shopping Mall, North District",
       hours: "10:00 AM - 1:00 AM Daily",
       features: ["4DX", "3D", "Food Court", "Family Zone"]
+    },
+    {
+      id: 3, 
+      name: "Afaf City Center",
+      address: "789 Central Plaza, Ville Nouvelle, Casablanca",
+      hours: "8:00 AM - 12:00 AM Daily",
+      features: ["4DX", "Family Zone", "IMAX", "VIP Lounge", "Parking", "Premium", "Dolby Vision", "Gourmet", "Valet", "3D"]
     }
   ];
 
