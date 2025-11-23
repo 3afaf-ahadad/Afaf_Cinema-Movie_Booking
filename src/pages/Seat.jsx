@@ -70,7 +70,10 @@ function Seats() {
     return (
       <div className="container text-center py-5">
         <h2>No Booking Information</h2>
-        <p>Please go back and select a cinema and showtime first.</p>
+        <p>
+          Please go back and select a <strong>cinema</strong> and{" "}
+          <strong>showtime</strong> first.
+        </p>
         <Link to="/" className="btn btn-primary">
           Back to Home
         </Link>
@@ -87,7 +90,7 @@ function Seats() {
           <div className="border-bottom pb-3 mb-3">
             <h4>{movie?.title}</h4>
             <p className="mb-1">
-              <strong>Cinema:</strong> {cinema} | <strong>Date:</strong> {date}{" "}
+              <strong>Cinema:</strong> {cinema}{" "} | <strong>Date:</strong> {date}{" "}
               | <strong>Time:</strong> {showtime}
             </p>
             <p className="text-muted mb-0">
@@ -193,6 +196,7 @@ function Seats() {
               movie: movie,
               showtime: showtime,
               date: date,
+              cinema: cinema,
               seats: selectedSeats,
               total: selectedSeats.length * 35,
             }}

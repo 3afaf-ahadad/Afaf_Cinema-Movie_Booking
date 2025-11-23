@@ -48,14 +48,14 @@ function Movie() {
             <div className="d-flex justify-content-between align-items-start mb-3">
               <h1 className="display-5 fw-bold">{movie.title}</h1>
 
-              {selectedTime ? (
+              {selectedTime && selectedCinema ? (
                 <Link
                   to="/seats"
                   state={{
                     movie: movie,
                     showtime: selectedTime,
                     date: dates.find((d) => d.id === selectedDate)?.label,
-                    cinema: selectedCinema,
+                    cinema: selectedCinema
                   }}
                   className="btn btn-primary btn-lg"
                 >
@@ -87,11 +87,7 @@ function Movie() {
           {cinemas.map((cinema) => (
             <button
               key={cinema.id}
-              className={`btn ${
-                selectedCinema === cinema.name
-                  ? "btn-primary"
-                  : "btn-outline-primary"
-              }`}
+              className={`btn ${selectedCinema === cinema.name ? 'btn-primary' : 'btn-outline-primary'}`}
               onClick={() => setSelectedCinema(cinema.name)}
             >
               {cinema.name}

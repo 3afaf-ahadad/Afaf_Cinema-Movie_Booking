@@ -7,7 +7,7 @@ function Payment() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { movie, showtime, date, seats, total } = location.state || {};
+  const { movie, showtime, date, cinema, seats, total } = location.state || {};
 
   if (!movie) {
     return (
@@ -53,6 +53,9 @@ function Payment() {
                   </p>
                   <p className="mb-1">
                     <strong>Date & Time:</strong> {date} at {showtime}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Cinema :</strong> {cinema}
                   </p>
                   <p className="mb-1">
                     <strong>Seats:</strong> {seats.join(", ")}
@@ -110,6 +113,9 @@ function Payment() {
                 <h6>{movie.title}</h6>
                 <p className="mb-1">
                   <strong>Date:</strong> {date}
+                </p>
+                <p className="mb-1">
+                  <strong>Cinema:</strong> {cinema}
                 </p>
                 <p className="mb-1">
                   <strong>Time:</strong> {showtime}
