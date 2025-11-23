@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Header() {
+  const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e) => {
@@ -16,14 +17,16 @@ function Header() {
     }
   };
 
-  // Hide search on Movies page
+  // Hiding search on Movies page
   const isMoviesPage = window.location.pathname === "/movies";
   return (
     <header className="border-bottom">
       <div className="container-fluid">
         <div className="d-flex align-items-center py-2">
           <Link className="text-decoration-none" to={"/"}>
-          <span className="fs-3 fw-bold text-dark text-decoration-none">Afaf Cinema</span>
+            <span className="fs-3 fw-bold text-dark text-decoration-none">
+              Afaf Cinema
+            </span>
           </Link>
 
           <nav className="d-none d-md-flex ms-4">
