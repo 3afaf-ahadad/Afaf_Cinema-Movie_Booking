@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     setIsLoading(true);
-    // Simulate API call
+
     setTimeout(() => {
       setUser({
         id: 1,

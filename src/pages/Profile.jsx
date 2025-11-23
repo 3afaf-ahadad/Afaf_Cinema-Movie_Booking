@@ -1,7 +1,5 @@
-// pages/Profile.jsx
-import React from 'react';
-import { useAuth } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function Profile() {
   const { user, logout } = useAuth();
@@ -33,8 +31,10 @@ function Profile() {
 
               <div className="row">
                 <div className="col-md-4 text-center">
-                  <div className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" 
-                       style={{width: '80px', height: '80px', fontSize: '2rem'}}>
+                  <div
+                    className="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                    style={{ width: "80px", height: "80px", fontSize: "2rem" }}
+                  >
                     {user.avatar}
                   </div>
                   <h4 className="mt-3">{user.name}</h4>
@@ -46,7 +46,8 @@ function Profile() {
                   <div className="card">
                     <div className="card-body">
                       <p className="text-muted mb-0">
-                        No bookings yet. <Link to="/movies">Book your first movie!</Link>
+                        No bookings yet.{" "}
+                        <Link to="/movies">Book your first movie!</Link>
                       </p>
                     </div>
                   </div>
@@ -56,7 +57,8 @@ function Profile() {
                     <div className="card">
                       <div className="card-body">
                         <p className="text-muted mb-0">
-                          Favorite genres, notification settings, etc. will appear here.
+                          Favorite genres, notification settings, etc. will
+                          appear here.
                         </p>
                       </div>
                     </div>
