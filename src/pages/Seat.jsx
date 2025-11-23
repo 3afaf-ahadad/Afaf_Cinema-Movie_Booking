@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 function Seats() {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const location = useLocation();
-  const { movie, showtime, date } = location.state || {};
+  const { movie, showtime, date, cinema } = location.state || {};
 
   const takenSeats = useMemo(() => {
     const rows = ["A", "B", "C", "D", "E", "F", "G", "H"];
@@ -66,11 +66,11 @@ function Seats() {
   };
 
   // Show error if no movie data
-  if (!movie) {
+  if (!movie || !cinema) {
     return (
       <div className="container text-center py-5">
-        <h2>No Movie Selected</h2>
-        <p>Please go back and select a movie and showtime first.</p>
+        <h2>No Booking Information</h2>
+        <p>Please go back and select a cinema and showtime first.</p>
         <Link to="/" className="btn btn-primary">
           Back to Home
         </Link>
@@ -85,12 +85,13 @@ function Seats() {
         <div className="col">
           <h1>Select Your Seats</h1>
           <div className="border-bottom pb-3 mb-3">
-            <h4>{movie.title}</h4>
+            <h4>{movie?.title}</h4>
             <p className="mb-1">
-              <strong>Date:</strong> {date} | <strong>Time:</strong> {showtime}
+              <strong>Cinema:</strong> {cinema} | <strong>Date:</strong> {date}{" "}
+              | <strong>Time:</strong> {showtime}
             </p>
             <p className="text-muted mb-0">
-              {movie.genre} • {movie.duration}
+              {movie?.genre} • {movie?.duration}
             </p>
           </div>
         </div>

@@ -6,9 +6,15 @@ function Movie() {
   const { id } = useParams();
   const movie = movies.find((m) => m.id === parseInt(id));
 
-  // ✅ STATE DECLARATIONS - MAKE SURE THESE EXIST
   const [selectedDate, setSelectedDate] = useState("today");
   const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedCinema, setSelectedCinema] = useState(null);
+
+  const cinemas = [
+    { id: 1, name: "Downtown" },
+    { id: 2, name: "Mall" },
+    { id: 3, name: "City Center" },
+  ];
 
   if (!movie) {
     return <div>Movie not found</div>;
@@ -49,6 +55,7 @@ function Movie() {
                     movie: movie,
                     showtime: selectedTime,
                     date: dates.find((d) => d.id === selectedDate)?.label,
+                    cinema: selectedCinema,
                   }}
                   className="btn btn-primary btn-lg"
                 >
@@ -77,11 +84,19 @@ function Movie() {
       <div className="mb-4">
         <h5 className="mb-3">Select Cinema:</h5>
         <div className="d-flex flex-wrap gap-2">
-          <button className="btn btn-outline-primary active">
-            Downtown Cinema
-          </button>
-          <button className="btn btn-outline-primary">Mall Location</button>
-          <button className="btn btn-outline-primary">City Center</button>
+          {cinemas.map((cinema) => (
+            <button
+              key={cinema.id}
+              className={`btn ${
+                selectedCinema === cinema.name
+                  ? "btn-primary"
+                  : "btn-outline-primary"
+              }`}
+              onClick={() => setSelectedCinema(cinema.name)}
+            >
+              {cinema.name}
+            </button>
+          ))}
         </div>
       </div>
 
