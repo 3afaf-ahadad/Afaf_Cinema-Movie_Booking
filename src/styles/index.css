@@ -1,8 +1,4 @@
-
-.min-vh-100 {
-  min-height: 100vh;
+body {
+  font-family: "Outfit", sans-serif;
 }
 
-.flex-grow-1 {
-  flex-grow: 1;
-}

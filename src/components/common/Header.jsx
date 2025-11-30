@@ -49,7 +49,6 @@ function Header() {
           <div className="ms-auto d-flex align-items-center gap-2">
             {user ? (
               <div className="d-flex align-items-center gap-2">
-                <span>Hello, {user.name}</span>
                 <Link to="/profile" className="btn btn-outline-primary btn-sm">
                   My Profile
                 </Link>
