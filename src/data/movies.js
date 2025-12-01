@@ -1,10 +1,9 @@
-
 export const movies = [
   // NOW SHOWING (First 8 movies)
   {
     id: 1,
     title: "Oppenheimer",
-    poster: "https://via.placeholder.com/300x450/007bff/ffffff?text=Oppenheimer",
+    poster: "https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
     rating: 8.6,
     genre: "Drama, History",
     duration: "3h 1m",
@@ -15,7 +14,7 @@ export const movies = [
   {
     id: 2,
     title: "Barbie",
-    poster: "https://via.placeholder.com/300x450/ff69b4/ffffff?text=Barbie",
+    poster: "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
     rating: 7.5,
     genre: "Comedy, Adventure",
     duration: "1h 54m",
@@ -25,8 +24,8 @@ export const movies = [
   },
   {
     id: 3,
-    title: "John Wick 4",
-    poster: "https://via.placeholder.com/300x450/333333/ffffff?text=John+Wick+4",
+    title: "John Wick: Chapter 4",
+    poster: "https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
     rating: 8.2,
     genre: "Action, Thriller",
     duration: "2h 49m",
@@ -37,7 +36,7 @@ export const movies = [
   {
     id: 4,
     title: "The Marvels",
-    poster: "https://via.placeholder.com/300x450/ff0000/ffffff?text=The+Marvels",
+    poster: "https://image.tmdb.org/t/p/w500/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg",
     rating: 6.5,
     genre: "Action, Adventure",
     duration: "1h 45m",
@@ -47,8 +46,8 @@ export const movies = [
   },
   {
     id: 5,
-    title: "Mission: Impossible 7",
-    poster: "https://via.placeholder.com/300x450/000080/ffffff?text=Mission+Impossible",
+    title: "Mission: Impossible - Dead Reckoning Part One",
+    poster: "https://image.tmdb.org/t/p/w500/NNxYkU70HPurnNCSiCjYAmacwm.jpg",
     rating: 8.1,
     genre: "Action, Adventure",
     duration: "2h 43m",
@@ -59,7 +58,7 @@ export const movies = [
   {
     id: 6,
     title: "Elemental",
-    poster: "https://via.placeholder.com/300x450/00ff00/000000?text=Elemental",
+    poster: "https://image.tmdb.org/t/p/w500/4Y1WNkd88JXmGfhtWR7dmDAo1T2.jpg",
     rating: 7.3,
     genre: "Animation, Comedy",
     duration: "1h 42m",
@@ -70,7 +69,7 @@ export const movies = [
   {
     id: 7,
     title: "Fast X",
-    poster: "https://via.placeholder.com/300x450/ffa500/000000?text=Fast+X",
+    poster: "https://image.tmdb.org/t/p/w500/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
     rating: 6.8,
     genre: "Action, Crime",
     duration: "2h 21m",
@@ -81,7 +80,7 @@ export const movies = [
   {
     id: 8,
     title: "The Little Mermaid",
-    poster: "https://via.placeholder.com/300x450/00ffff/000000?text=Little+Mermaid",
+    poster: "https://image.tmdb.org/t/p/w500/ym1dxyOk4jFcSl4Q2zmRrA5BEEN.jpg",
     rating: 7.4,
     genre: "Adventure, Family",
     duration: "2h 15m",
@@ -94,7 +93,7 @@ export const movies = [
   {
     id: 9,
     title: "Dune: Part Two",
-    poster: "https://via.placeholder.com/300x450/8b4513/ffffff?text=Dune+Part+2",
+    poster: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
     rating: 9.1,
     genre: "Sci-Fi, Adventure",
     duration: "2h 46m",
@@ -104,8 +103,8 @@ export const movies = [
   },
   {
     id: 10,
-    title: "The Batman 2",
-    poster: "https://via.placeholder.com/300x450/000000/ffffff?text=Batman+2",
+    title: "The Batman - Part II",
+    poster: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
     rating: 8.7,
     genre: "Action, Crime",
     duration: "2h 55m",
@@ -116,7 +115,7 @@ export const movies = [
   {
     id: 11,
     title: "Avatar 3",
-    poster: "https://via.placeholder.com/300x450/0000ff/ffffff?text=Avatar+3",
+    poster: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
     rating: 8.9,
     genre: "Sci-Fi, Adventure",
     duration: "3h 12m",
@@ -126,8 +125,8 @@ export const movies = [
   },
   {
     id: 12,
-    title: "Black Panther 3",
-    poster: "https://via.placeholder.com/300x450/800080/ffffff?text=Black+Panther+3",
+    title: "Black Panther: Wakanda Forever",
+    poster: "https://image.tmdb.org/t/p/w500/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
     rating: 8.5,
     genre: "Action, Adventure",
     duration: "2h 38m",
@@ -137,8 +136,8 @@ export const movies = [
   },
   {
     id: 13,
-    title: "Spider-Man: Beyond",
-    poster: "https://via.placeholder.com/300x450/ff0000/ffffff?text=Spider-Man+Beyond",
+    title: "Spider-Man: Across the Spider-Verse",
+    poster: "https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
     rating: 8.8,
     genre: "Animation, Action",
     duration: "2h 20m",
@@ -148,8 +147,8 @@ export const movies = [
   },
   {
     id: 14,
-    title: "Indiana Jones 5",
-    poster: "https://via.placeholder.com/300x450/daa520/000000?text=Indiana+Jones+5",
+    title: "Indiana Jones and the Dial of Destiny",
+    poster: "https://image.tmdb.org/t/p/w500/Af4bXE63pVsb2FtbW8uYIyPBadD.jpg",
     rating: 7.9,
     genre: "Adventure, Action",
     duration: "2h 32m",
@@ -159,8 +158,8 @@ export const movies = [
   },
   {
     id: 15,
-    title: "Frozen 3",
-    poster: "https://via.placeholder.com/300x450/00bfff/000000?text=Frozen+3",
+    title: "Frozen",
+    poster: "https://image.tmdb.org/t/p/w500/kgwjIb2JDHRhNk13lmSxiClFjVk.jpg",
     rating: 8.2,
     genre: "Animation, Musical",
     duration: "1h 58m",
@@ -170,8 +169,8 @@ export const movies = [
   },
   {
     id: 16,
-    title: "Star Wars: New Jedi",
-    poster: "https://via.placeholder.com/300x450/ffff00/000000?text=Star+Wars+Jedi",
+    title: "Star Wars: The Rise of Skywalker",
+    poster: "https://image.tmdb.org/t/p/w500/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
     rating: 8.4,
     genre: "Sci-Fi, Adventure",
     duration: "2h 45m",

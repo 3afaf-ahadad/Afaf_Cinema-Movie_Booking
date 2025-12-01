@@ -23,9 +23,9 @@ function Header() {
   return (
     <header className="border-bottom">
       <div className="container-fluid">
-        <div className="d-flex align-items-center py-2">
+        <div className="d-flex align-items-center .logo py-2">
           <Link className="text-decoration-none" to={"/"}>
-            <span className="fs-3 fw-bold text-dark text-decoration-none">
+            <span className="fs-3 fw-bold .logo text-decoration-none">
               Afaf Cinema
             </span>
           </Link>

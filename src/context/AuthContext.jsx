@@ -5,6 +5,7 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [reservations, setReservations] = useState([]);
 
   const login = async (email, password) => {
     setIsLoading(true);
@@ -22,10 +23,30 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     setUser(null);
+    setReservations([]);
+  };
+
+  const addReservation = (reservationData) => {
+    const newReservation = {
+      id: Date.now(), // Simple ID generation
+      ...reservationData,
+      bookingDate: new Date().toLocaleDateString(),
+      status: "confirmed",
+    };
+    setReservations((prev) => [newReservation, ...prev]);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isLoading }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        logout,
+        isLoading,
+        reservations,
+        addReservation,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

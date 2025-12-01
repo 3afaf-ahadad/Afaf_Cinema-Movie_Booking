@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Payment() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { addReservation } = useAuth();
 
   const { movie, showtime, date, cinema, seats, total } = location.state || {};
 
@@ -28,6 +30,16 @@ function Payment() {
     setTimeout(() => {
       setIsProcessing(false);
       setIsSuccess(true);
+
+      addReservation({
+        movie: movie.title,
+        cinema: cinema,
+        date: date,
+        time: showtime,
+        seats: seats,
+        total: total,
+        moviePoster: movie.poster,
+      });
     }, 2000);
   };
 
@@ -103,7 +115,7 @@ function Payment() {
 
       <div className="row">
         {/* Order Summary */}
-        <div className="col-md-6 mb-4">
+        <div className="col-md-6 mb-4 ">
           <div className="card">
             <div className="card-header">
               <h5 className="mb-0">Order Summary</h5>
