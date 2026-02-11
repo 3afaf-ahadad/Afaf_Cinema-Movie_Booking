@@ -1,4 +1,4 @@
-# 🎬 Afaf Cinema - Rapport du Projet
+# 🎬 Afaf Cinema - Rapport du Projet: (Lien: https://afaf-cinema-movie-booking.vercel.app/)
 
 ## 📋 Vue d'Ensemble du Projet
 **Afaf Cinema** est une application web moderne et élégante de réservation de billets de cinéma, conçue pour offrir aux utilisateurs une expérience de réservation fluide et esthétique. La plateforme combine un design sophistiqué avec des fonctionnalités pratiques pour recréer l'ambiance premium d'une salle de cinéma.
